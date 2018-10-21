@@ -1,0 +1,15 @@
+.booking-row {
+    height: 50px;
+    width: 100%;
+    background-color: gray;
+    border-bottom: 1px solid white;
+    font-size: 12px;
+}
+
+.booking-row-booked {
+    height: 50px;
+    width: 100%;
+    background-color: pink;
+    border-bottom: 1px solid white;
+    font-size: 12px;
+}

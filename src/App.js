@@ -1,28 +1,50 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import BookingContainer from './Booking';
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      duration: 0,
+    };
+  }
+
+  dummySlots() {
+    const slots = [];
+    slots.push({
+      startTime: 1,
+      endTime: 3,
+    });
+
+    slots.push({
+      startTime: 4,
+      endTime: 6,
+    });
+    slots.push({
+      startTime: 12,
+      endTime: 15,
+    });
+    slots.push({
+      startTime: 19,
+      endTime: 21,
+    });
+    return slots;
+  }
+
   render() {
+    const slots = this.dummySlots();
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <BookingContainer
+          slots={slots}
+        />
       </div>
     );
   }
+
 }
 
 export default App;
