@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import BookingContainer from './Booking';
+import Header from './Header';
+import SearchPage from './Search';
+
 
 class App extends Component {
 
@@ -9,7 +12,15 @@ class App extends Component {
     super(props);
     this.state = {
       duration: 0,
+      selectedPage: 1,
     };
+    this.onHeaderItemClick = this.onHeaderItemClick.bind(this);
+  }
+
+  onHeaderItemClick(page) {
+    this.setState({
+      selectedPage: page,
+    })
   }
 
   dummySlots() {
@@ -36,11 +47,16 @@ class App extends Component {
 
   render() {
     const slots = this.dummySlots();
+    const { selectedPage } = this.state;
+    // const selectedPage = this.state.selectedPage;
     return (
-      <div>
-        <BookingContainer
+      <div className="App">
+        <Header onItemClick={this.onHeaderItemClick}/>
+        {selectedPage == 3 && <BookingContainer
           slots={slots}
-        />
+        />}
+        {selectedPage == 2 && <SearchPage/>}
+        {selectedPage == 1 && <div>Hey home page</div>}
       </div>
     );
   }

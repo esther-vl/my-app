@@ -4,6 +4,7 @@
     background-color: gray;
     border-bottom: 1px solid white;
     font-size: 12px;
+    padding: 5px;
 }
 
 .booking-row-booked {
@@ -12,4 +13,23 @@
     background-color: pink;
     border-bottom: 1px solid white;
     font-size: 12px;
+    padding: 5px;
+}
+.booking-row-selected {
+    height: 50px;
+    width: 100%;
+    background-color: yellowgreen;
+    border-bottom: 1px solid white;
+    font-size: 12px;
+    padding: 5px;
+}
+
+.booking-container {
+    margin: 0px 300px;
+    min-width: 600px;
+    padding-bottom: 50px;
+}
+
+.booking-container h2 {
+    text-align: center;
 }
