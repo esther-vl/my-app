@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Room One",
+        "num": "1001"
+    },
+
+    {
+        "name": "Room Two",
+        "num": "1002"
+    },
+
+        {
+        "name": "Room Three",
+        "num": "1003"
+    },
+
+        {
+        "name": "Room Four",
+        "num": "1004"
+    },
+
+        {
+        "name": "Room Five",
+        "num": "1005"
+    }
+]
