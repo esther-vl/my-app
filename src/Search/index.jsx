@@ -1,96 +1,73 @@
 import React, { Component} from 'react';
-import roomsList from './rooms.json';
+import './style.css';
 
-import { Input, Footer, Card, CardBody, CardTitle, } from 'react';
-import blankImg from './logo.jpg';
+const room = [
+    {
+        name: "Room 1",
+        num: 1001
+    },
+    {
+        name: "Room 2",
+        num: 1002
+    },
+    {
+        name: "Room 3",
+        num: 1003
+    },
+    {
+        name: "Room 4",
+        num: 1004
+    },
+    {
+        name: "Room 5",
+        num: 1005
+    }
+]
 
+function searchingFor(term){
+    return function(x){
+        return x.name.toLowerCase().includes(term.toLowerCase()) || !term;
+    }
+}
 
 class SearchPage extends Component {
+    constructor(props){
+    super(props);
 
-
-    state = {
-        search : ""
+    this.state = {
+        room : room,
+        term: '',
     }
 
+    this.searchHandler = this.searchHandler.bind(this);
+}
 
-    renderRoom = room =>{
-        const {search} = this.state;
-        var num = room.num.toLowerCase()
-
-        /*if( search !== "" && country.name.toLowerCase().indexOf( search.toLowerCase() ) === -1 ){
-            return null
-        }*/
-
-        return <div className="col-md-3" style={{ marginTop : '20px' }}>
-            <Card>
-                <CardBody>
-                    <p className=""><img src={blankImg} className={ "flag flag-"+num } alt={room.name} /></p>
-                    <CardTitle title={room.name}>{room.name.substring(0, 15)}{ room.name.length > 15 && "..."}</CardTitle>
-                </CardBody>
-            </Card>
-        </div>
-    }
-
-    onchange = e =>{
-        this.setState({ search : e.target.value });
-    }
-
-    render() {
-
-        const {search} = this.state;
-        const filteredRooms = roomsList.filter( room =>{
-            return room.name.toLowerCase().indexOf( search.toLowerCase() ) !== -1
-        })
-
-        return (
-            <div className="flyout">
-            <main style={{marginTop: '4rem'}}>
-                <div className="container">
-                    <div className="row">
-                        <div className="col"></div>
-                        <div className="col">
-                            <Input label="Search Rooms" icon="search" onChange={this.onchange}/>
-                        </div>
-                        <div className="col"></div>
-                    </div>
-                    <div className="row">
-                        {
-                            filteredRooms.map( room =>{
-                                return this.renderRoom(room)
-                            })
-                        }
-                    </div>
-                </div>
-            </main>
-            <Footer color="indigo">
-                <p className="footer-copyright mb-0">
-                &copy; {(new Date().getFullYear())} Copyright
-                </p>
-            </Footer>
-            </div>
-        );
-    }
+searchHandler(event){
+    this.setState({term: event.target.value})
 }
 
 
 
-
-
-
-
-
-
-
-
-    //renderRoom = room=>{
-      //  const {search} = this.state;
-        //var num = room
-    //}
-    //render() {
-      //  return (<div>
-        //    This is search page
-          //  </div>)
-    //}
-//}
+    render() {
+        const {term, room} = this.state;
+        return (
+            <div className="SearchPage">
+            <form 
+            input type="text" 
+                    onChange = {this.searchHandler}
+                    value = {term}/>
+            {
+                room.filter(searchingFor(term)).map ( list =>
+                        <div>
+                            <h2> {list.name} </h2>
+                            <h2> {list.num} </h2>
+                        </div>
+                    )
+                }
+            
+            </div>
+        );
+    }
+}
 
 export default SearchPage;
