@@ -46,14 +46,12 @@ searchHandler(event){
     this.setState({term: event.target.value})
 }
 
-
-
     render() {
         const {term, room} = this.state;
         return (
             <div className="SearchPage">
-            <form 
-            input type="text" 
+            <form >
+            <input type="text" 
                     onChange = {this.searchHandler}
                     value = {term}/>
             {
@@ -64,7 +62,7 @@ searchHandler(event){
                         </div>
                     )
                 }
-            
+            </form>
             </div>
         );
     }
