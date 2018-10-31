@@ -51,15 +51,17 @@ searchHandler(event){
         return (
             <div className="SearchPage">
             <form >
-            <input type="text" 
-                    onChange = {this.searchHandler}
-                    value = {term}/>
-            {
+                <label>
+                    <input type="text" 
+                        onChange = {this.searchHandler}
+                        value = {term}/>
+                </label>
+                {
                 room.filter(searchingFor(term)).map ( list =>
-                        <div>
-                            <h2> {list.name} </h2>
-                            <h2> {list.num} </h2>
-                        </div>
+                    <div>
+                        <h2> {list.name} </h2>
+                        <h2> {list.num} </h2>
+                    </div>
                     )
                 }
             </form>

@@ -46,7 +46,7 @@ class BookingContainer extends Component {
     }
 
     onRowClicked(hour) {
-        if (this.state.selectionStart == -1) {
+        if (this.state.selectionStart === -1) {
             // Beginning of the selection
             this.setState({selectionStart: hour});
         } else {

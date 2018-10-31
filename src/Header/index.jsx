@@ -7,6 +7,7 @@ class Header extends Component {
         return (<div>
                 <ul onClick={() => this.props.onItemClick(2)}>Search</ul>
                 <ul onClick={() => this.props.onItemClick(3)}>Booking</ul>
+                <ul onClick={() => this.props.onItemClick(4)}>Admin</ul>
             </div>
             )
     }
