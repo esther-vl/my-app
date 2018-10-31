@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import BookingContainer from './Booking';
 import Header from './Header';
 import SearchPage from './Search';
+import CreateRoom from './Admin';
 
 
 class App extends Component {
@@ -52,6 +52,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header onItemClick={this.onHeaderItemClick}/>
+        {selectedPage == 4 && <CreateRoom/>}
         {selectedPage == 3 && <BookingContainer
           slots={slots}
         />}

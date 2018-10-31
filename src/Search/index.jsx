@@ -50,7 +50,7 @@ searchHandler(event){
         const {term, room} = this.state;
         return (
             <div className="SearchPage">
-            <form >
+            <form className="Container">
                 <label>
                     <input type="text" 
                         onChange = {this.searchHandler}
