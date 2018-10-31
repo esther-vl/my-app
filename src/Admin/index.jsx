@@ -27,10 +27,10 @@ class CreateRoom extends React {
             .then(res => res.json())
             .then(data => {
                 this.setState({
-                    roomname = data.roomname,
-                    roomnumber = data.roomnumber,
-                    facilitiesSelection = data.facilitiesSelection,
-                    location = data.location
+                    roomname : data.roomname,
+                    roomnumber : data.roomnumber,
+                    facilitiesSelection : data.facilitiesSelection,
+                    location : data.location
                 });
             });
 
