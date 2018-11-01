@@ -1,6 +1,6 @@
 {
     "roomname":"",
-    "roomnumber":"",
+    "roomnumber":[],
     "facilitiesSelection":["Projector", "WhiteBoard", "Table", "AC", "Sofa"],
     "location":""
 }

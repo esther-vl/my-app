@@ -1,25 +1,26 @@
-import React, {component} from 'react';
-import Checkbox from './Checkbox';
-import Select from './Select';
-import SingleInput from './SingleInput';
+import React, {Component} from 'react';
+import Checkbox from '../common/Checkbox';
+import SingleInput from '../common/SingleInput';
 
-class CreateRoom extends React {
+
+class CreateRoom extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             roomname:'',
             roomnumber:'',
-            facilitiesSelection:'',
-            location:''
+            facilitiesSelection:[],
+            location:'',
+            selectedFacilities:[],
         };
-
-    this.handleClearForm = this.handleClearForm.bind(this);
-    this.handleFacilitiesSelection = this.handleFacilitiesSelection.bind(this);
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.handleLocationChange = this.handleLocationChange.bind(this);
-    this.handleRoomNameChange = this.handleRoomNameChange.bind(this);
-    this.handleRoomNumberChange = this.handleRoomNumberChange.bind(this);
+       
+        this.handleClearForm = this.handleClearForm.bind(this);
+        this.handleFacilitiesSelection = this.handleFacilitiesSelection.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.handleLocationChange = this.handleLocationChange.bind(this);
+        this.handleRoomNameChange = this.handleRoomNameChange.bind(this);
+        this.handleRoomNumberChange = this.handleRoomNumberChange.bind(this);
     }
 
     componentDidMount(){
@@ -59,7 +60,7 @@ class CreateRoom extends React {
         
     
     handleLocationChange(e) {
-        this.setState({location: e.target.value}, () => console.log('location', this.state.location));
+        this.setState({location: e.target.value});
     }
 
     handleClearForm(e) {
@@ -97,16 +98,17 @@ class CreateRoom extends React {
                     content={this.state.roomname}
                     controlFunc={this.handleRoomNameChange}
                     placeholder={'Type the room name here'} />
-                <Select
+                <SingleInput
 					inputType={'number'}
-					name={'RoomNumber'}
+                    name={'Room Number'}
+                    title={'Room Number'}
+                    content={this.state.roomnumber}
 					controlFunc={this.handleRoomNumberChange}
-					option={this.state.roomnumber}
 					placeholder={'Room Number'} />
                 <Checkbox
                     title={'Add the Facilities'}
                     setName={'facilities'}
-                    type={Checkbox}
+                    type='checkbox'
                     controlFunc={this.handleFacilitiesSelection}
 					options={this.state.facilitiesSelection}
 					selectedOptions={this.state.selectedFacilities} />
@@ -116,8 +118,8 @@ class CreateRoom extends React {
                     name={'location'}
                     content={this.state.location}
                     controlFunc={this.handleLocationChange}
-                    placeholder={'Type the location here'} />
-                    />
+                    placeholder={'Type the location here'} 
+                />
                 <input
 					type="submit"
 					className="btn btn-primary float-right"
@@ -132,4 +134,3 @@ class CreateRoom extends React {
 
 }
 export default CreateRoom;
-
