@@ -25,6 +25,8 @@ class Login extends Component {
         }
         return(
             <div >
+                <table>
+                    <tr>
                 <input 
                     type='text'
                     name='username'
@@ -32,16 +34,23 @@ class Login extends Component {
                     value={this.state.name}
                     onChange={this.onNameChange}
                     />
+                    </tr>
+                    <br/>
+                    <tr>
                 <input
                     type='password'
                     pswd='password'
                     value={this.state.pswd}
                     onChange={this.onPswdChange}
                     placeholder='Password'/>
-              
+                    </tr>
+                    <br/>
+                    <tr>
                 <button
                     onClick={() => this.props.handleLogin(this.state.name, this.state.pswd)}>Login
                 </button>
+                </tr>
+                </table>
               </div>
         );
     }
