@@ -47,13 +47,13 @@ class CreateRoom extends Component {
     handleFacilitiesSelection(e) {
             const newSelection = e.target.value;
             let newSelectionArray;
-            if(this.state.facilitiesSelection.indexOf(newSelection) > -1) {
-                newSelectionArray = this.state.facilitiesSelection.filter(s => s !== newSelection) 
+            if(this.state.selectedFacilities.indexOf(newSelection) > -1) {
+                newSelectionArray = this.state.selectedFacilities.filter(s => s !== newSelection) 
             }
             else {
-                newSelectionArray = [...this.state.selectedPets, newSelection];
+                newSelectionArray = [...this.state.selectedFacilities, newSelection];
             }
-            this.setState({facilitiesSelection: newSelectionArray}, () => console.log('facilities', this.state.facilitiesSelection));
+            this.setState({selectedFacilities: newSelectionArray}, () => console.log('facilities', this.state.selectedFacilities));
             }
 
 
@@ -68,8 +68,8 @@ class CreateRoom extends Component {
         this.setState({
             roomname: '',
             roomnumber: 0,
-            facilitiesSelection: '',
-            location: ''
+            selectedFacilities: [],
+            location: '',
         });
     }
 
@@ -82,7 +82,15 @@ class CreateRoom extends Component {
             facilitiesSelection: this.state.facilitiesSelection,
             location: this.state.location
         };
-        console.log('Send this in a POST request:', formPayload);
+        // fetch('http://localhost:9000/api/room/', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(formPayload)
+        // }).then(res => res.json())
+        // .then(data => console.log(data));
 		this.handleClearForm(e);
     }
 
@@ -91,35 +99,61 @@ class CreateRoom extends Component {
         return(
             <form className="Container" onSubmit={this.handleFormSubmit}>
                 <h4>Create Room</h4>
-                <SingleInput
-                    inputType={'text'}
-                    title={'Room name'}
-                    name={'name'}
-                    content={this.state.roomname}
-                    controlFunc={this.handleRoomNameChange}
-                    placeholder={'Type the room name here'} />
+                <table>
+                    <tr>
+                        <td>
+                            <label>Room Name</label>
+                        </td>
+                        <td>
+                        <SingleInput
+                            inputType={'text'}
+                            name={'name'}
+                            content={this.state.roomname}
+                            controlFunc={this.handleRoomNameChange}
+                            placeholder={'Type the room name here'} />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Room Number</label>
+                        </td>
+                        <td>
                 <SingleInput
 					inputType={'number'}
                     name={'Room Number'}
-                    title={'Room Number'}
                     content={this.state.roomnumber}
 					controlFunc={this.handleRoomNumberChange}
 					placeholder={'Room Number'} />
+                    </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Add the facilities</label>
+                        </td>
+                        <td>
                 <Checkbox
-                    title={'Add the Facilities'}
                     setName={'facilities'}
                     type='checkbox'
                     controlFunc={this.handleFacilitiesSelection}
 					options={this.state.facilitiesSelection}
 					selectedOptions={this.state.selectedFacilities} />
+                    </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Location</label>
+                        </td>
+                        <td>
+
                 <SingleInput
                     inputType={'text'}
-                    title={'Type the location'}
                     name={'location'}
                     content={this.state.location}
                     controlFunc={this.handleLocationChange}
-                    placeholder={'Type the location here'} 
-                />
+                    placeholder={'Type the location here'} />
+                    </td>
+                    </tr>
+                    </table>
                 <input
 					type="submit"
 					className="btn btn-primary float-right"
@@ -127,6 +161,7 @@ class CreateRoom extends Component {
 				<button
 					className="btn btn-link float-left"
 					onClick={this.handleClearForm}>Clear form</button>
+                
             </form>
         );
     }

@@ -3,30 +3,30 @@ import './style.css';
 
 const room = [
     {
-        name: "Room 1",
+        name: "Joel",
         num: 1001
     },
     {
-        name: "Room 2",
+        name: "Rachael",
         num: 1002
     },
     {
-        name: "Room 3",
+        name: "Monica",
         num: 1003
     },
     {
-        name: "Room 4",
+        name: "Monica 2",
         num: 1004
     },
     {
-        name: "Room 5",
+        name: "Rose",
         num: 1005
     }
 ]
 
 function searchingFor(term){
     return function(x){
-        return x.name.toLowerCase().includes(term.toLowerCase()) || !term;
+        return x.name.toLowerCase().startsWith(term.toLowerCase()) || !term;
     }
 }
 

@@ -4,6 +4,7 @@ import BookingContainer from './Booking';
 import Header from './Header';
 import SearchPage from './Search';
 import CreateRoom from './Admin';
+import Login from './Login';
 
 
 class App extends Component {
@@ -13,14 +14,43 @@ class App extends Component {
     this.state = {
       duration: 0,
       selectedPage: 1,
+      login: {
+        state: 0,
+        admin: false,
+      },
     };
     this.onHeaderItemClick = this.onHeaderItemClick.bind(this);
+    this.onLoginClick = this.onLoginClick.bind(this);
+  }
+
+  onLoginClick(name,pswd) {
+    if(name == "esther" && pswd == "esther") {
+      this.setState({
+        login: {
+          state: 1,
+          username: name,
+          admin: true,
+        } 
+      })
+    } else if(name == "esther1" && pswd == "esther1") {
+      this.setState({
+        login: {
+          state: 1,
+          username: name,
+          admin: false,
+        } 
+      })
+    }
   }
 
   onHeaderItemClick(page) {
-    this.setState({
-      selectedPage: page,
-    })
+    if(this.state.login.state == 1) {
+      this.setState({
+        selectedPage: page,
+      })
+    }
+    else (alert('You\'re not logged in'))
+    
   }
 
   dummySlots() {
@@ -47,17 +77,20 @@ class App extends Component {
 
   render() {
     const slots = this.dummySlots();
-    const { selectedPage } = this.state;
+    const { selectedPage, login } = this.state;
     // const selectedPage = this.state.selectedPage;
     return (
       <div className="App">
-        <Header onItemClick={this.onHeaderItemClick}/>
-        {selectedPage == 4 && <CreateRoom/>}
-        {selectedPage == 3 && <BookingContainer
+        <Header admin={login.admin} onItemClick={this.onHeaderItemClick}/>
+          {selectedPage == 4 && login.admin && <CreateRoom/>}
+          {selectedPage == 3 && <BookingContainer
           slots={slots}
-        />}
-        {selectedPage == 2 && <SearchPage/>}
-        {selectedPage == 1 && <div>Hey home page</div>}
+          />}
+          {selectedPage == 2 && <SearchPage/>}
+        
+        <div className="loginform">
+          {selectedPage == 1 && <Login loginState={login} handleLogin={this.onLoginClick}/>}
+        </div>
       </div>
     );
   }

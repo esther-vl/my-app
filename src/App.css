@@ -1,7 +1,3 @@
-.App {
-  background-color: aliceblue;
-}
-
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
@@ -20,6 +16,12 @@
 
 .App-link {
   color: #61dafb;
+}
+.loginform {
+  width: 320px;
+  padding: 10px;
+  border: 5px solid gray;
+  margin: auto;
 }
 
 @keyframes App-logo-spin {
