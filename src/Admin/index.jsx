@@ -154,14 +154,13 @@ class CreateRoom extends Component {
                     </td>
                     </tr>
                     </table>
-                <input
-					type="submit"
-					className="btn btn-primary float-right"
-					value="Submit"/>
 				<button
 					className="btn btn-link float-left"
 					onClick={this.handleClearForm}>Clear form</button>
-                
+        <input
+					type="submit"
+					className="btn btn-primary float-left"
+					value="Submit"/>
             </form>
         );
     }

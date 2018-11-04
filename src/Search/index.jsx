@@ -49,22 +49,25 @@ searchHandler(event){
     render() {
         const {term, room} = this.state;
         return (
-            <div className="SearchPage">
-            <form className="Container">
-                <label>
-                    <input type="text" 
-                        onChange = {this.searchHandler}
-                        value = {term}/>
-                </label>
-                {
-                room.filter(searchingFor(term)).map ( list =>
-                    <div>
-                        <h2> {list.name} </h2>
-                        <h2> {list.num} </h2>
-                    </div>
-                    )
-                }
-            </form>
+            <div className="search-page">
+            <input type="text" 
+                placeholder="Search Room"
+                onChange = {this.searchHandler}
+                value = {term}/>
+            <table className="table table-bordered search-table">
+              <tr>
+                <th>Room Number</th>
+                <th>Room Name</th>
+              </tr>
+              {
+              room.filter(searchingFor(term)).map ( list =>
+                  <tr>
+                      <td>{list.num}</td>
+                      <td>{list.name}</td>
+                  </tr>
+                  )
+              }
+            </table>
             </div>
         );
     }

@@ -1,6 +1,7 @@
-.searchPage{
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.search-page {
+    padding: 10px;
+}
+
+.search-table {
+  margin-top: 10px;
 }

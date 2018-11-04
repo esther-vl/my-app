@@ -88,9 +88,9 @@ class App extends Component {
           />}
           {selectedPage == 2 && <SearchPage/>}
         
-        <div className="loginform">
-          {selectedPage == 1 && <Login loginState={login} handleLogin={this.onLoginClick}/>}
-        </div>
+      {selectedPage == 1 && <div className="loginform">
+          <Login loginState={login} handleLogin={this.onLoginClick}/>
+        </div>}
       </div>
     );
   }
